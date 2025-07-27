@@ -12,7 +12,6 @@ namespace The_Game.character
     {
         public PlayerCharacter(string name, int health, int level, int experience, int coins) : base(name, health, level, experience, coins)
         {
-
             public override void Attack(CharacterBase target)
         {
             throw new NotImplementedException();
