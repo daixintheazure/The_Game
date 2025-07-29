@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
+using The_Game.character;
 
 public class Program
 {
@@ -8,10 +10,13 @@ public class Program
     static int upgradeCost = 10;
     static bool running = true;
 
+    static PlayerCharacter dai = new PlayerCharacter("Dai Xin", 100, 1, 0, 0);
+    
+
     public static async Task Main()
     {
         Task generator = PassiveIncome();
-
+        
 
         while (running)
         {
@@ -51,7 +56,7 @@ public class Program
         while (running)
         {
             await Task.Delay(2000);
-            coins += coinsPerTick;
+            dai.EarnCoins(1);
             Console.WriteLine("dai gained a coin!");
         }
 
