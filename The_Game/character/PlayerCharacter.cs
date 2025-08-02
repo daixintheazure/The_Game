@@ -26,10 +26,7 @@ namespace The_Game.character
             Console.WriteLine($"{this.Name} now has {this.Coins} coins.");
             }
 
-        public override void LevelUp()
-        {
-            throw new NotImplementedException();
-        }
+
         
        
             
