@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using The_Game.monsters;
 
 namespace The_Game.character
 {
@@ -15,11 +16,7 @@ namespace The_Game.character
         { 
         
         }
-        public override void Attack(CharacterBase target)
-            {
-                throw new NotImplementedException();
-            }
-
+        
         public override void EarnCoins(int amount)
             {
             this.Coins += 1;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using The_Game.monsters;
 
 namespace The_Game.character
 {
@@ -10,21 +11,26 @@ namespace The_Game.character
     {
         public string Name { get; set; }
         public int Health { get; set; }
+        public int MaxHealth { get; set; }
         public int Level { get; set; }
         public int Experience { get; set; }
 
         public int ToLevel {  get; set; }
         public int Coins { get; set; }
-        protected CharacterBase(string name, int health, int level, int experience, int coins)
+        protected CharacterBase(string name, int maxHealth, int level, int experience, int coins)
         {
             Name = name;
-            Health = health;
+            MaxHealth = maxHealth;
+            Health = maxHealth;
             Level = level;
             Experience = experience;
             Coins = coins;
             ToLevel = 100;
         }
-        public abstract void Attack(CharacterBase target);
+        public void Attack(MonsterBase target)
+        {
+            target.TakeDamage(1, this);
+        }
         public void LevelUp()
         {
             Level += 1;
@@ -45,5 +51,18 @@ namespace The_Game.character
 
         }
 
+        public void TakeDamage(int amount)
+        {
+            Health -= amount;
+            Console.WriteLine($"{this.Name} has take {amount} damage!" +
+                $"{this.Name} has {this.Health} health remaining.");
+
+            if (Health <= 0)
+            {
+                Console.WriteLine("You have died!");
+                Console.WriteLine("Resetting Health to max");
+                Health = MaxHealth;
+            }
+        }
     }
 }

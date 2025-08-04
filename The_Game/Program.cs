@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using System;
 using The_Game.character;
+using The_Game.monsters;
 
 public class Program
 {
@@ -11,6 +12,7 @@ public class Program
     static bool running = true;
 
     static PlayerCharacter dai = new PlayerCharacter("Dai Xin", 100, 1, 0, 0);
+    static SmallMonster slime = new SmallMonster("Slime");
     
 
     public static async Task Main()
@@ -56,9 +58,18 @@ public class Program
         while (running)
         {
             await Task.Delay(2000);
-            //dai.EarnCoins(1);
-            dai.GainExperience(50);
-            Console.WriteLine("dai gained a coin!");
+            if (slime.Health <= 0) { slime.Health = slime.MaxHealth;}
+            if (slime.Health == slime.MaxHealth)
+            {
+                Console.WriteLine($"You have encountered a {slime.Name}!");
+                dai.Attack(slime);
+                slime.Attack(dai);
+              
+            } else
+            {
+                dai.Attack(slime);
+                slime.Attack(dai);
+            }
         }
 
     }
