@@ -17,7 +17,7 @@ public class Program
 
     public static async Task Main()
     {
-        Task generator = PassiveIncome();
+        Task generator = StartGame();
         
 
         while (running)
@@ -53,7 +53,7 @@ public class Program
 
 
 
-    static async Task PassiveIncome()
+    static async Task StartGame()
     {
         while (running)
         {
