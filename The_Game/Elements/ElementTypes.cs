@@ -15,6 +15,7 @@ namespace The_Game.Elements
         Earth = 1 << 2,
         Air = 1 << 3,
         Light = 1 << 4,
-        Dark = 1 << 5
+        Dark = 1 << 5,
+        Physical = 1 << 6
     }
 }

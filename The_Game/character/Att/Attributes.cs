@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.NetworkInformation;
+using System.Text;
+using System.Threading.Tasks;
+using The_Game.Elements;
+
+namespace The_Game.character.Att
+{
+    public class Attributes
+    {
+        public AttributesStat Physical { get; set; } = new AttributesStat();
+        public AttributesStat Fire { get; set; } = new AttributesStat();
+        public AttributesStat Water { get; set; } = new AttributesStat();
+        public AttributesStat Earth { get; set; } = new AttributesStat();
+        public AttributesStat Air { get; set; } = new AttributesStat();
+        public AttributesStat Light { get; set; } = new AttributesStat();
+        public AttributesStat Dark { get; set; } = new AttributesStat();
+
+        public void GainXPFor(ElementTypes type, int amount)
+            {
+                if (type == ElementTypes.Fire)
+                {
+                    Fire.GainXP(amount);
+                }
+                if (type == ElementTypes.Physical)
+                {
+                    Physical.GainXP(amount);
+                }
+                if (type == ElementTypes.Water)
+                {
+                    Water.GainXP(amount);
+                }
+                if (type == ElementTypes.Earth)
+                {
+                    Earth.GainXP(amount);
+                }
+                if (type == ElementTypes.Light)
+                {
+                    Light.GainXP(amount);
+                }
+                if (type == ElementTypes.Dark)
+                {
+                    Dark.GainXP(amount);
+                }
+        }
+
+        public int GetValue(ElementTypes type)
+        {
+            int value = 0;
+            if (type == ElementTypes.Fire)
+            {
+                value = this.Fire.Value;
+            }
+            if (type == ElementTypes.Physical)
+            {
+                value = this.Physical.Value;
+            }
+            if (type == ElementTypes.Water)
+            {
+                value = this.Water.Value;
+            }
+            if (type == ElementTypes.Earth)
+            {
+                value = this.Earth.Value;
+            }
+            if (type == ElementTypes.Light)
+            {
+                value = this.Light.Value;
+            }
+            if (type == ElementTypes.Dark)
+            {   
+                value = this.Dark.Value;
+            }
+
+            return value;
+        }
+    }
+
+    
+}
