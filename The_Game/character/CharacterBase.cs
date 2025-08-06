@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using The_Game.monsters;
+using The_Game.Skills;
 
 namespace The_Game.character
 {
@@ -14,9 +15,10 @@ namespace The_Game.character
         public int MaxHealth { get; set; }
         public int Level { get; set; }
         public int Experience { get; set; }
-
         public int ToLevel {  get; set; }
         public int Coins { get; set; }
+        public List<SkillBase> Skills { get; set; } = new List<SkillBase> { SkillDatabase.CloneSkill(SkillDatabase.Attack) };
+
         protected CharacterBase(string name, int maxHealth, int level, int experience, int coins)
         {
             Name = name;
@@ -29,7 +31,7 @@ namespace The_Game.character
         }
         public void Attack(MonsterBase target)
         {
-            target.TakeDamage(1, this);
+            target.TakeDamage(Skills[0].useSkill(), this);
         }
         public void LevelUp()
         {

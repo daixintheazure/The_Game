@@ -4,27 +4,28 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using The_Game.Elements;
 
 namespace The_Game.Skills
 {
     public class SkillBase
     {
         public string Name { get; set; }
-        public string Description { get; set; }
-        public int Level { get; set; }
+        public string? Description { get; set; }
+        public int Level { get; set; } = 0;
         public int FusionChance { get; set; }
         public bool IsBasic { get; set; }
-
         public int Damage { get; set; }
+        public List<ElementTypes> Elements { get; set; } = new List<ElementTypes> { ElementTypes.None };
+        public List<SkillBase> Family = new List<SkillBase>();
 
-        public List<SkillBase> family = new List<SkillBase>();
-        public SkillBase(string name, int level, bool isBasic) {
+
+        public SkillBase(string name, bool isBasic) {
             Name = name;
-            Level = level;
             IsBasic = isBasic;
         }
 
-        public int genFussionChaance ()
+        public int genFusionChance ()
         {
             int percent = 0;
 
@@ -34,7 +35,7 @@ namespace The_Game.Skills
             }
             else
             {
-                percent = 100 / family.Count;
+                percent = 100 / Family.Count;
             }
 
             return percent;
