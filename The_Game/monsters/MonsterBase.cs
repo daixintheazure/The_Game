@@ -16,7 +16,7 @@ namespace The_Game.monsters
         public int Level { get; set; } = 1;
         public int MaxHealth { get; set; } = 20;
         public int Health { get; set; }
-        public List<ElementTypes> Elements { get; set; } = new List<ElementTypes> { ElementTypes.None };
+        public ElementTypes Element { get; set; } = ElementTypes.None;
         public List<SkillBase> Skills { get; set; } = new List<SkillBase> { SkillDatabase.CloneSkill(SkillDatabase.Attack) };
 
         public MonsterBase(string name) {

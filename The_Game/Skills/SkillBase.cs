@@ -16,7 +16,7 @@ namespace The_Game.Skills
         public int FusionChance { get; set; }
         public bool IsBasic { get; set; }
         public int Damage { get; set; }
-        public List<ElementTypes> Elements { get; set; } = new List<ElementTypes> { ElementTypes.None };
+        public ElementTypes Element { get; set; } = ElementTypes.None;
         public List<SkillBase> Family = new List<SkillBase>();
 
 
