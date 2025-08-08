@@ -23,10 +23,27 @@ namespace The_Game.character
             Console.WriteLine($"{this.Name} now has {this.Coins} coins.");
             }
 
+        public override void OnDeath(CharacterBase target)
+        {
+            throw new NotImplementedException();
+        }
 
-        
-       
-            
+        public override void TakeDamage(int amount, CharacterBase target)
+        {
+            Health -= amount;
+            Console.WriteLine($"{this.Name} has take {amount} damage!" +
+                $"{this.Name} has {this.Health} health remaining.");
+
+            if (Health <= 0)
+            {
+                Console.WriteLine("You have died!");
+                Console.WriteLine("Resetting Health to max");
+                Health = MaxHealth;
+            }
+        }
+
+
+
     }
 
         

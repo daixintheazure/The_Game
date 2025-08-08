@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using The_Game.character.Att;
+using The_Game.Elements;
 using The_Game.monsters;
 using The_Game.Skills;
 
@@ -19,6 +20,7 @@ namespace The_Game.character
         public int ToLevel {  get; set; }
         public int Coins { get; set; }
         public Attributes Attributes { get; set; } = new Attributes();
+        public ElementTypes Element { get; set; } = ElementTypes.None;
         public List<SkillBase> Skills { get; set; } = new List<SkillBase> { SkillDatabase.CloneSkill(SkillDatabase.Attack) };
 
         protected CharacterBase(string name, int maxHealth, int level, int experience, int coins)
@@ -31,7 +33,14 @@ namespace The_Game.character
             Coins = coins;
             ToLevel = 100;
         }
-        public void Attack(MonsterBase target)
+
+        protected CharacterBase(string name, int level) 
+        {
+            Name = name;
+            Level = level;
+            Health = MaxHealth;
+        }
+        public void Attack(CharacterBase target)
         {
             target.TakeDamage(Skills[0].UseSkill(this, target), this);
         }
@@ -55,18 +64,14 @@ namespace The_Game.character
 
         }
 
-        public void TakeDamage(int amount)
-        {
-            Health -= amount;
-            Console.WriteLine($"{this.Name} has take {amount} damage!" +
-                $"{this.Name} has {this.Health} health remaining.");
+        public abstract void TakeDamage(int amount, CharacterBase target);
 
-            if (Health <= 0)
-            {
-                Console.WriteLine("You have died!");
-                Console.WriteLine("Resetting Health to max");
-                Health = MaxHealth;
-            }
+        public abstract void OnDeath(CharacterBase target);
+
+        public void GenMonsterStats(int level)
+        {
+            this.Attributes.GenValues(level);
+            
         }
     }
 }

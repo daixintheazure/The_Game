@@ -8,7 +8,7 @@ namespace The_Game.character.Att
 {
     public class AttributesStat
     {
-        public int Value { get; private set; } = 1;
+        public int Value { get; set; } = 1;
         public int Experience { get; private set; } = 0;
         private int xpToLevel = 10;
 

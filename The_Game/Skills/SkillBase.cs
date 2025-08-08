@@ -43,21 +43,13 @@ namespace The_Game.Skills
             return percent;
         }
 
-        public int UseSkill(CharacterBase user , MonsterBase target)
+        public int UseSkill(CharacterBase user , CharacterBase target)
         {
             Damage = user.Attributes.GetValue(Element) + (user.Level / 10);
             user.Attributes.GainXPFor(Element, 1);
             Console.WriteLine($"{user.Name} has dealt {Damage} to {target.Name}");
             return Damage;
         }
-
-        public int UseSkill(MonsterBase user, CharacterBase target)
-        { 
-            Damage = user.Attributes.GetValue(Element) + (user.Level / 10);
-            return Damage;
-        }
-            
-
         
     }
 }

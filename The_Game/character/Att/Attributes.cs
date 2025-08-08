@@ -28,6 +28,10 @@ namespace The_Game.character.Att
                 {
                     Physical.GainXP(amount);
                 }
+                if (type == ElementTypes.Air)
+                {
+                    Air.GainXP(amount);            
+                }
                 if (type == ElementTypes.Water)
                 {
                     Water.GainXP(amount);
@@ -53,6 +57,10 @@ namespace The_Game.character.Att
             {
                 value = this.Fire.Value;
             }
+            if (type == ElementTypes.Air)
+            {
+                value = this.Air.Value;
+            }
             if (type == ElementTypes.Physical)
             {
                 value = this.Physical.Value;
@@ -75,6 +83,17 @@ namespace The_Game.character.Att
             }
 
             return value;
+        }
+
+        public void GenValues(int x)
+        {
+            this.Fire.Value = new Random().Next(x * 10);
+            this.Physical.Value = new Random().Next(x * 10);
+            this.Air.Value = new Random().Next(x * 10);
+            this.Earth.Value = new Random().Next(x * 10);
+            this.Water.Value = new Random().Next(x * 10);
+            this.Light.Value = new Random().Next(x * 10);
+            this.Dark.Value = new Random().Next(x * 10);
         }
     }
 

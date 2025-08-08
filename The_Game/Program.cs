@@ -12,7 +12,7 @@ public class Program
     static bool running = true;
 
     static PlayerCharacter dai = new PlayerCharacter("Dai Xin", 100, 1, 0, 0);
-    static SmallMonster slime = new SmallMonster("Slime");
+    //static SmallMonster slime = new SmallMonster("Slime", dai.Level);
     
 
     public static async Task Main()
@@ -55,10 +55,15 @@ public class Program
 
     static async Task StartGame()
     {
+        //SmallMonster slime = new SmallMonster("Slime", dai.Level);
         while (running)
         {
             await Task.Delay(2000);
-            if (slime.Health <= 0) { slime.Health = slime.MaxHealth;}
+            if (SmallMonster) 
+            {
+                SmallMonster slime = new SmallMonster("Slime", dai.Level);
+            }
+
             if (slime.Health == slime.MaxHealth)
             {
                 Console.WriteLine($"You have encountered a {slime.Name}!");
