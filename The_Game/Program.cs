@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using The_Game.BattleSystem;
 using The_Game.character;
 using The_Game.monsters;
 
@@ -13,6 +14,7 @@ public class Program
 
     static PlayerCharacter dai = new PlayerCharacter("Dai Xin", 100, 1, 0, 0);
     //static SmallMonster slime = new SmallMonster("Slime", dai.Level);
+    static Battle Battle = new Battle();
     
 
     public static async Task Main()
@@ -58,23 +60,9 @@ public class Program
         //SmallMonster slime = new SmallMonster("Slime", dai.Level);
         while (running)
         {
+            
             await Task.Delay(2000);
-            if (SmallMonster) 
-            {
-                SmallMonster slime = new SmallMonster("Slime", dai.Level);
-            }
-
-            if (slime.Health == slime.MaxHealth)
-            {
-                Console.WriteLine($"You have encountered a {slime.Name}!");
-                dai.Attack(slime);
-                slime.Attack(dai);
-              
-            } else
-            {
-                dai.Attack(slime);
-                slime.Attack(dai);
-            }
+            Battle.Fight(dai,  new SmallMonster("Slime", dai.Level));
         }
 
     }

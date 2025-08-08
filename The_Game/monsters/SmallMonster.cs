@@ -13,6 +13,7 @@ namespace The_Game.monsters
             : base(name, level)
         {
             this.GenMonsterStats(level);
+            this.Health = 100;
         }
 
         public override void TakeDamage(int amount, CharacterBase target)
