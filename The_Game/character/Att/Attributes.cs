@@ -10,13 +10,13 @@ namespace The_Game.character.Att
 {
     public class Attributes
     {
-        public AttributesStat Physical { get; set; } = new AttributesStat();
-        public AttributesStat Fire { get; set; } = new AttributesStat();
-        public AttributesStat Water { get; set; } = new AttributesStat();
-        public AttributesStat Earth { get; set; } = new AttributesStat();
-        public AttributesStat Air { get; set; } = new AttributesStat();
-        public AttributesStat Light { get; set; } = new AttributesStat();
-        public AttributesStat Dark { get; set; } = new AttributesStat();
+        public AttributesStat Physical { get; set; } = new AttributesStat("Physical");
+        public AttributesStat Fire { get; set; } = new AttributesStat("Fire");
+        public AttributesStat Water { get; set; } = new AttributesStat("Water");
+        public AttributesStat Earth { get; set; } = new AttributesStat("Earth");
+        public AttributesStat Air { get; set; } = new AttributesStat("Air");
+        public AttributesStat Light { get; set; } = new AttributesStat("Light");
+        public AttributesStat Dark { get; set; } = new AttributesStat("Dark");
 
         public void GainXPFor(ElementTypes type, int amount)
             {

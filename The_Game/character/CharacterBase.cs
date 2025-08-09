@@ -63,6 +63,7 @@ namespace The_Game.character
             }
 
         }
+        public abstract void AttributeGainXP(CharacterBase user, SkillBase skill, int exp);
 
         public abstract void TakeDamage(int amount, CharacterBase target);
 

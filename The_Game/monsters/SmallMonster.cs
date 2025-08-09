@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using The_Game.character;
+using The_Game.Skills;
 
 namespace The_Game.monsters
 {
@@ -20,10 +21,15 @@ namespace The_Game.monsters
         {
             Health = Health - amount;
 
-            if (Health <= 0)
-            {
-                OnDeath(target);
-            }
+            //if (Health <= 0)
+            //{
+            //    OnDeath(target);
+            //}
+        }
+
+        public override void AttributeGainXP(CharacterBase user, SkillBase skill, int exp)
+        {
+            
         }
 
         public override void EarnCoins(int amount)

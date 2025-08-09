@@ -45,8 +45,8 @@ namespace The_Game.Skills
 
         public int UseSkill(CharacterBase user , CharacterBase target)
         {
-            Damage = user.Attributes.GetValue(Element) + (user.Level / 10);
-            user.Attributes.GainXPFor(Element, 1);
+            Damage = user.Attributes.GetValue(Element) * (user.Level);
+            user.AttributeGainXP(user, this, 1);
             Console.WriteLine($"{user.Name} has dealt {Damage} to {target.Name}");
             return Damage;
         }

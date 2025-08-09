@@ -9,7 +9,27 @@ namespace The_Game.BattleSystem
 {
     public class Battle
     {
-        public Battle() { }
+        private BattleResult result;
+        public Battle() {
+            this.result = new BattleResult();
+        }
+
+        private void ShowBattleSummary(BattleResult result)
+        {
+            Console.WriteLine("\n===== Battle Summary =====");
+            Console.WriteLine($"Coins Earned: {result.CoinsEarned}");
+            Console.WriteLine($"EXP Earned: {result.ExpEarned}");
+
+            if (result.AttributeExpGained.Count > 0)
+            {
+                Console.WriteLine("Attribute EXP Gains:");
+                foreach (var kvp in result.AttributeExpGained)
+                {
+                    Console.WriteLine($"  {kvp.Key}: {kvp.Value} EXP");
+                }
+            }
+            Console.WriteLine("==========================\n");
+        }
         public void Fight(CharacterBase player, CharacterBase monster)
         {
             Console.WriteLine($"You have encountered a level {monster.Level} {monster.Name}");
@@ -27,6 +47,7 @@ namespace The_Game.BattleSystem
                     $"*                                                    *\n" +
                     $"******************************************************\n");
             }
+            
             if (monster.Health <= 0)
             {
                 Console.WriteLine($"" +
@@ -35,7 +56,9 @@ namespace The_Game.BattleSystem
                     $"*                  You have won!                     *\n" +
                     $"*                                                    *\n" +
                     $"******************************************************\n");
+                monster.OnDeath(player);
             }
+            //ShowBattleSummary(result);
         }
     }
 }
