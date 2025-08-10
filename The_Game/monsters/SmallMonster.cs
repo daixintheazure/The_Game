@@ -21,10 +21,6 @@ namespace The_Game.monsters
         {
             Health = Health - amount;
 
-            //if (Health <= 0)
-            //{
-            //    OnDeath(target);
-            //}
         }
 
         public override void AttributeGainXP(CharacterBase user, SkillBase skill, int exp)

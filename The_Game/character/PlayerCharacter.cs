@@ -34,6 +34,8 @@ namespace The_Game.character
             user.Attributes.GainXPFor(skill.Element, exp);
         }
 
+       
+
         public override void TakeDamage(int amount, CharacterBase target)
         {
             Health -= amount;
