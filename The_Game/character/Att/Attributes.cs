@@ -18,6 +18,38 @@ namespace The_Game.character.Att
         public AttributesStat Light { get; set; } = new AttributesStat("Light");
         public AttributesStat Dark { get; set; } = new AttributesStat("Dark");
 
+        private static Dictionary<ElementTypes, int> battleXPTracker = new Dictionary<ElementTypes, int>();
+
+        public void tracker(ElementTypes type, int amount) 
+        {
+            if (!battleXPTracker.ContainsKey(type))
+            {
+                battleXPTracker[type] = 0;
+            }
+            battleXPTracker[type] += amount;
+        }
+
+        public static void ResetBattleGains()
+            { 
+                battleXPTracker.Clear(); 
+            }
+
+        public static string GetBattleReport()
+        {
+            if (battleXPTracker.Count == 0)
+            {
+                return "No attribute experiance gained in this battle.";
+            }
+
+            var sb = new StringBuilder();
+            sb.AppendLine("=== BattleSystem Gains ===");
+            foreach (var attb in battleXPTracker)
+            {
+                sb.AppendLine($"{attb.Key}: +{attb.Value} XP.");
+            }
+            return sb.ToString();
+        }
+
         public void GainXPFor(ElementTypes type, int amount)
             {
                 if (type == ElementTypes.Fire)
@@ -48,6 +80,7 @@ namespace The_Game.character.Att
                 {
                     Dark.GainXP(amount);
                 }
+                tracker(type, amount);
         }
 
         public int GetValue(ElementTypes type)

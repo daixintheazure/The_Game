@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using The_Game.character;
+using The_Game.character.Att;
 
 namespace The_Game.BattleSystem
 {
@@ -14,6 +15,7 @@ namespace The_Game.BattleSystem
 
         public void Start(CharacterBase monster)
         {
+            Attributes.ResetBattleGains();
             Console.WriteLine($"You have encountered a level {monster.Level} {monster.Name}");
         }
 
@@ -26,6 +28,7 @@ namespace The_Game.BattleSystem
                    $"*                                                    *\n" +
                    $"******************************************************\n");
             monster.OnDeath(player);
+            Console.WriteLine(Attributes.GetBattleReport());
             Console.WriteLine($"============================================\n");
         }
 
