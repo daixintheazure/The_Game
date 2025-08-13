@@ -40,6 +40,8 @@ namespace The_Game.BattleSystem
                     $"*                  You have die!                     *\n" +
                     $"*                                                    *\n" +
                     $"******************************************************\n");
+            Console.WriteLine(Attributes.GetBattleReport());
+            Console.WriteLine($"==============================================\n");
         }
         
 
@@ -59,6 +61,7 @@ namespace The_Game.BattleSystem
                 if (player.Health <= 0)
                 {
                     Defeat();
+                    player.Health = player.MaxHealth;
                     break;
                 }
             }

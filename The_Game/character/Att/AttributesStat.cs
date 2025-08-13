@@ -22,14 +22,14 @@ namespace The_Game.character.Att
         public void GainXP(int amount)
         {
             Experience += amount;
-            Console.WriteLine($"{this.Name} Gained {amount} XP");
+            //Console.WriteLine($"{this.Name} Gained {amount} XP");
 
             while ( Experience >= xpToLevel )
             {
                 //Experience -= amount;
                 Value++;
                 xpToLevel = (int)(xpToLevel * 1.5);
-                Console.WriteLine($"{this.Name} Attribute increased to: {Value}");
+                //Console.WriteLine($"{this.Name} Attribute increased to: {Value}");
             }
         }
     }

@@ -44,9 +44,9 @@ namespace The_Game.character
 
             if (Health <= 0)
             {
-                Console.WriteLine("You have died!");
-                Console.WriteLine("Resetting Health to max");
-                Health = MaxHealth;
+                //Console.WriteLine("You have died!");
+                //Console.WriteLine("Resetting Health to max");
+                //Health = MaxHealth;
             }
         }
 

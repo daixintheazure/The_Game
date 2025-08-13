@@ -35,8 +35,8 @@ namespace The_Game.monsters
 
         public override void OnDeath(CharacterBase target)
         {
-            target.GainExperience(50);
-            target.EarnCoins(10);
+            target.GainExperience(5);
+            target.EarnCoins(1);
         }
     }
 }
