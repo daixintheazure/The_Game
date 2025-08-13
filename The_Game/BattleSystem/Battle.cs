@@ -49,17 +49,22 @@ namespace The_Game.BattleSystem
             while (player.Health > 0 && monster.Health > 0)
             {
                 player.Attack(monster);
+                if (monster.Health <= 0)
+                {
+                    Victory(player, monster);
+                    break;
+                }
+                
                 monster.Attack(player);
-            }
-            if (player.Health <= 0)
-            {
-                Defeat();
+                if (player.Health <= 0)
+                {
+                    Defeat();
+                    break;
+                }
             }
             
-            if (monster.Health <= 0)
-            {
-                Victory(player, monster);
-            }
+            
+            
             //ShowBattleSummary(result);
         }
     }
