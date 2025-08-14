@@ -19,6 +19,7 @@ namespace The_Game.Skills
         {
             Description = "Basic Attck.",
             Damage = 10,
+            Element = Elements.ElementTypes.Physical
         };
 
         public static SkillBase CloneSkill(SkillBase skill)
@@ -29,6 +30,7 @@ namespace The_Game.Skills
                 Level = skill.Level,
                 FusionChance = skill.FusionChance,
                 Damage = skill.Damage,
+                Element = skill.Element,
                 Family = new List<SkillBase>(skill.Family) 
             };
         }

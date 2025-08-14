@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using The_Game.BattleSystem;
 using The_Game.character;
 using The_Game.monsters;
 
@@ -12,12 +13,13 @@ public class Program
     static bool running = true;
 
     static PlayerCharacter dai = new PlayerCharacter("Dai Xin", 100, 1, 0, 0);
-    static SmallMonster slime = new SmallMonster("Slime");
+    //static SmallMonster slime = new SmallMonster("Slime", dai.Level);
+    static Battle Battle = new Battle();
     
 
     public static async Task Main()
     {
-        Task generator = PassiveIncome();
+        Task generator = StartGame();
         
 
         while (running)
@@ -53,23 +55,14 @@ public class Program
 
 
 
-    static async Task PassiveIncome()
+    static async Task StartGame()
     {
+        //SmallMonster slime = new SmallMonster("Slime", dai.Level);
         while (running)
         {
+            
             await Task.Delay(2000);
-            if (slime.Health <= 0) { slime.Health = slime.MaxHealth;}
-            if (slime.Health == slime.MaxHealth)
-            {
-                Console.WriteLine($"You have encountered a {slime.Name}!");
-                dai.Attack(slime);
-                slime.Attack(dai);
-              
-            } else
-            {
-                dai.Attack(slime);
-                slime.Attack(dai);
-            }
+            Battle.Fight(dai,  new SmallMonster("Slime", dai.Level));
         }
 
     }

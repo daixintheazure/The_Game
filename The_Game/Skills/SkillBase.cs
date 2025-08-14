@@ -4,7 +4,9 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using The_Game.character;
 using The_Game.Elements;
+using The_Game.monsters;
 
 namespace The_Game.Skills
 {
@@ -41,13 +43,13 @@ namespace The_Game.Skills
             return percent;
         }
 
-        public int useSkill()
+        public int UseSkill(CharacterBase user , CharacterBase target)
         {
-
+            Damage = user.Attributes.GetValue(Element) * (user.Level);
+            user.AttributeGainXP(user, this, 1);
+            Console.WriteLine($"{user.Name} has dealt {Damage} to {target.Name}");
             return Damage;
         }
-            
-
         
     }
 }

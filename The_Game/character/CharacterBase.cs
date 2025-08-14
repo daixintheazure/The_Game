@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using The_Game.character.Att;
+using The_Game.Elements;
 using The_Game.monsters;
 using The_Game.Skills;
 
@@ -17,6 +19,8 @@ namespace The_Game.character
         public int Experience { get; set; }
         public int ToLevel {  get; set; }
         public int Coins { get; set; }
+        public Attributes Attributes { get; set; } = new Attributes();
+        public ElementTypes Element { get; set; } = ElementTypes.None;
         public List<SkillBase> Skills { get; set; } = new List<SkillBase> { SkillDatabase.CloneSkill(SkillDatabase.Attack) };
 
         protected CharacterBase(string name, int maxHealth, int level, int experience, int coins)
@@ -29,9 +33,16 @@ namespace The_Game.character
             Coins = coins;
             ToLevel = 100;
         }
-        public void Attack(MonsterBase target)
+
+        protected CharacterBase(string name, int level) 
         {
-            target.TakeDamage(Skills[0].useSkill(), this);
+            Name = name;
+            Level = level;
+            Health = MaxHealth;
+        }
+        public void Attack(CharacterBase target)
+        {
+            target.TakeDamage(Skills[0].UseSkill(this, target), this);
         }
         public void LevelUp()
         {
@@ -52,19 +63,16 @@ namespace The_Game.character
             }
 
         }
+        public abstract void AttributeGainXP(CharacterBase user, SkillBase skill, int exp);
 
-        public void TakeDamage(int amount)
+        public abstract void TakeDamage(int amount, CharacterBase target);
+
+        public abstract void OnDeath(CharacterBase target);
+
+        public void GenMonsterStats(int level)
         {
-            Health -= amount;
-            Console.WriteLine($"{this.Name} has take {amount} damage!" +
-                $"{this.Name} has {this.Health} health remaining.");
-
-            if (Health <= 0)
-            {
-                Console.WriteLine("You have died!");
-                Console.WriteLine("Resetting Health to max");
-                Health = MaxHealth;
-            }
+            this.Attributes.GenValues(level);
+            
         }
     }
 }
