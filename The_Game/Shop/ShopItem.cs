@@ -17,6 +17,8 @@ namespace The_Game.Shop
         public int? ExpCost { get; set; }
         public string? Description { get; set; }
 
+        public bool IsBuy { get; set; }
+
         public ShopItem(string name, int? cost, int? expCost, string? description) 
         {
             Name = name;
