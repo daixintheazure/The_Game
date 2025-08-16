@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using The_Game.character;
 using The_Game.character.Att;
+using The_Game.Utils;
 
 namespace The_Game.BattleSystem
 {
@@ -16,32 +17,32 @@ namespace The_Game.BattleSystem
         public void Start(CharacterBase monster)
         {
             Attributes.ResetBattleGains();
-            Console.WriteLine($"You have encountered a level {monster.Level} {monster.Name}");
+            GameLogger.WriteLine($"You have encountered a level {monster.Level} {monster.Name}");
         }
 
         public void Victory(CharacterBase player, CharacterBase monster)
         {
-            Console.WriteLine($"" +
+            GameLogger.WriteLine($"" +
                    $"******************************************************\n" +
                    $"*                                                    *\n" +
                    $"*                  You have won!                     *\n" +
                    $"*                                                    *\n" +
                    $"******************************************************\n");
             monster.OnDeath(player);
-            Console.WriteLine(Attributes.GetBattleReport());
-            Console.WriteLine($"============================================\n");
+            GameLogger.WriteLine(Attributes.GetBattleReport());
+            GameLogger.WriteLine($"============================================\n");
         }
 
         public void Defeat()
         {
-            Console.WriteLine($"" +
+            GameLogger.WriteLine($"" +
                     $"******************************************************\n" +
                     $"*                                                    *\n" +
                     $"*                  You have die!                     *\n" +
                     $"*                                                    *\n" +
                     $"******************************************************\n");
-            Console.WriteLine(Attributes.GetBattleReport());
-            Console.WriteLine($"==============================================\n");
+            GameLogger.WriteLine(Attributes.GetBattleReport());
+            GameLogger.WriteLine($"==============================================\n");
         }
         
 

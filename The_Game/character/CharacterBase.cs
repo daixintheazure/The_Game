@@ -7,6 +7,7 @@ using The_Game.character.Att;
 using The_Game.Elements;
 using The_Game.monsters;
 using The_Game.Skills;
+using The_Game.Utils;
 
 namespace The_Game.character
 {
@@ -47,14 +48,14 @@ namespace The_Game.character
         public void LevelUp()
         {
             Level += 1;
-            Console.WriteLine(this.Name + " has reached level " + Level);
+            GameLogger.WriteLine(this.Name + " has reached level " + Level);
         }
         public abstract void EarnCoins(int amount);
 
         public void GainExperience(int amount)
         {
             Experience += amount;
-            Console.WriteLine(this.Name + " Has gained " + amount + " experiance!");
+            GameLogger.WriteLine(this.Name + " Has gained " + amount + " experiance!");
 
             if (Experience >= ToLevel)
             {

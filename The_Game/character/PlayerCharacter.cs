@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using The_Game.monsters;
 using The_Game.Skills;
+using The_Game.Utils;
 
 namespace The_Game.character
 {
@@ -21,7 +22,7 @@ namespace The_Game.character
         public override void EarnCoins(int amount)
             {
             this.Coins += amount;
-            Console.WriteLine($"{this.Name} now has {this.Coins} coins.");
+            GameLogger.WriteLine($"{this.Name} now has {this.Coins} coins.");
             }
 
         public override void OnDeath(CharacterBase target)
@@ -39,7 +40,7 @@ namespace The_Game.character
         public override void TakeDamage(int amount, CharacterBase target)
         {
             Health -= amount;
-            Console.WriteLine($"{this.Name} has take {amount} damage!" +
+            GameLogger.WriteLine($"{this.Name} has take {amount} damage!" +
                 $"{this.Name} has {this.Health} health remaining.");
 
             if (Health <= 0)

@@ -27,5 +27,11 @@ namespace The_Game.Shop
         {
 
         };
+
+
+        public static List<Item> AllItems = new List<Item>
+        {
+            FireSkill, WaterSkill, EarthSkill, AirSkill
+        };
     }
 }

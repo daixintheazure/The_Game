@@ -3,6 +3,7 @@ using System;
 using The_Game.BattleSystem;
 using The_Game.character;
 using The_Game.monsters;
+using The_Game.Shop;
 
 public class Program
 {
@@ -15,6 +16,8 @@ public class Program
     static PlayerCharacter dai = new PlayerCharacter("Dai Xin", 100, 1, 0, 0);
     //static SmallMonster slime = new SmallMonster("Slime", dai.Level);
     static Battle Battle = new Battle();
+    static Shop shop = new Shop (ItemDatabase.AllItems);
+    public static bool ShopOpen = false;
     
 
     public static async Task Main()
@@ -26,8 +29,9 @@ public class Program
         {
             string input = Console.ReadLine()?.Trim().ToLower();
 
-            if (input == "buy")
+            if (input == "shop")
             {
+                Shop.OpenShop();   
                 //if (coins >= upgradeCost)
                 //{
                 //    coins -= upgradeCost;
@@ -46,7 +50,7 @@ public class Program
             }
             else
             {
-                Console.WriteLine("Unknown command. Try 'buy' or 'exit'.");
+                Console.WriteLine("Unknown command. Try 'shop' or 'exit'.");
             }
         }
 

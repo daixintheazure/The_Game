@@ -9,7 +9,7 @@ namespace The_Game.Shop
 {
     public abstract class ShopItem
     {
-        private static int nextId = 0;
+        private static int nextId = 1;
         public int Id { get; private set; }
 
         public string Name { get; set; }
@@ -26,9 +26,18 @@ namespace The_Game.Shop
             ExpCost = expCost;
             Description = description;
             Id = nextId++;
+        }
 
-            
-
+        public virtual void Display()
+        {
+            Console.WriteLine($"[{Id}] {Name}");
+            //if (Cost.HasValue)
+                Console.WriteLine($"  Gold Cost: {Cost ?? 0}");
+            //if (ExpCost.HasValue)
+                Console.WriteLine($"  EXP Cost: {ExpCost ?? 0}");
+            //if (!string.IsNullOrWhiteSpace(Description))
+                Console.WriteLine($"  Description: {Description}");
+            Console.WriteLine();
         }
     }
 }
