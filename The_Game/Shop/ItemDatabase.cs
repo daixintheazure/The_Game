@@ -10,7 +10,7 @@ namespace The_Game.Shop
     {
         public static Item FireSkill = new Item("Fire Skill", null, null, null)
         {
-
+            IsBuy = true
         };
 
         public static Item WaterSkill = new Item("Water Skill", null, null, null)

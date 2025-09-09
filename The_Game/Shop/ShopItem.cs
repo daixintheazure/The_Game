@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using The_Game.character;
 
 namespace The_Game.Shop
 {
@@ -38,6 +39,11 @@ namespace The_Game.Shop
             //if (!string.IsNullOrWhiteSpace(Description))
                 Console.WriteLine($"  Description: {Description}");
             Console.WriteLine();
+        }
+
+        public void Buy(CharacterBase characterBase)
+        { 
+            
         }
     }
 }

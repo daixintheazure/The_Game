@@ -23,7 +23,11 @@ namespace The_Game.Shop
             Console.WriteLine("Shop");
             foreach (ShopItem item in Items)
             {
-                item.Display();
+                if (item.IsBuy == true)
+                { 
+                    item.Display();
+                }
+                
             }
         }
 
@@ -46,6 +50,10 @@ namespace The_Game.Shop
                     {
                         Program.ShopOpen = false;
                         shopping = false;
+                    }
+                    else if(choice == Items[choice].Id)
+                    {
+                    
                     }
                     else
                     {
