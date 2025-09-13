@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace The_Game.character
         public Attributes Attributes { get; set; } = new Attributes();
         public ElementTypes Element { get; set; } = ElementTypes.None;
         public List<SkillBase> Skills { get; set; } = new List<SkillBase> { SkillDatabase.CloneSkill(SkillDatabase.Attack) };
+        public SkillBase[] combatSkills; 
 
         protected CharacterBase(string name, int maxHealth, int level, int experience, int coins)
         {
@@ -33,6 +35,13 @@ namespace The_Game.character
             Experience = experience;
             Coins = coins;
             ToLevel = 100;
+
+            combatSkills = new SkillBase[1];
+            combatSkills[0] = Skills[0];
+
+
+            GenCombatSkillList(level);
+            
         }
 
         protected CharacterBase(string name, int level) 
@@ -40,10 +49,66 @@ namespace The_Game.character
             Name = name;
             Level = level;
             Health = MaxHealth;
+
+            combatSkills = new SkillBase[1];
+            combatSkills[0] = Skills[0];
+
+
+            GenCombatSkillList(level);
+        }
+
+        public void GenCombatSkillList(int level)
+        { 
+            switch(level)
+                {
+                case 5:
+
+                    CombatSkillCheckOnLevel();
+                    break;
+
+                case 10:
+                    CombatSkillCheckOnLevel();
+                    break;
+                
+
+                case 20:
+                    CombatSkillCheckOnLevel();
+                    break;
+                
+
+                case 40:
+                    CombatSkillCheckOnLevel();
+                    break;
+
+                default:
+                    combatSkills = new SkillBase[1];
+                    if (Skills != null)
+                    { 
+                        combatSkills[0] = Skills[0];
+                    }
+                    
+                    break;
+            }
+
+        }
+
+        public SkillBase[] CombatSkillCheckOnLevel()
+        { 
+            var temp = this.combatSkills;
+            var size = temp.Length + 1;
+
+            combatSkills = new SkillBase[size];
+
+            for(int i = 0; i < temp.Length; i++)
+            {
+                combatSkills[i] = temp[i];
+            }
+
+            return combatSkills;
         }
         public void Attack(CharacterBase target)
         {
-            target.TakeDamage(Skills[0].UseSkill(this, target), this);
+            target.TakeDamage(combatSkills[0].UseSkill(this, target), this);
         }
         public void LevelUp()
         {
