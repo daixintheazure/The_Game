@@ -19,7 +19,7 @@ namespace The_Game.monsters
 
         public override void TakeDamage(int amount, CharacterBase target)
         {
-            Health = Health - amount;
+            Health -= amount;
 
         }
 
