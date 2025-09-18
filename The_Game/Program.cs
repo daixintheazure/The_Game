@@ -16,14 +16,14 @@ public class Program
     static PlayerCharacter dai = new PlayerCharacter("Dai Xin", 100, 1, 0, 0);
     //static SmallMonster slime = new SmallMonster("Slime", dai.Level);
     static Battle Battle = new Battle();
-    static Shop shop = new Shop (ItemDatabase.AllItems);
+    
     public static bool ShopOpen = false;
     
 
     public static async Task Main()
     {
         Task generator = StartGame();
-        
+        GameShop shop = new GameShop (ItemDatabase.AllItems);
 
         while (running)
         {
@@ -31,7 +31,7 @@ public class Program
 
             if (input == "shop")
             {
-                Shop.OpenShop();   
+                shop.OpenShop();   
                 //if (coins >= upgradeCost)
                 //{
                 //    coins -= upgradeCost;

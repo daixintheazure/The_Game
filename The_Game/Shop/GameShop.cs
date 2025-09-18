@@ -7,18 +7,18 @@ using The_Game.character;
 
 namespace The_Game.Shop
 {
-    public class Shop
+    public class GameShop
     {
         public CharacterBase Character { get; set; }
 
-        public static List<Item> Items { get; set; }
+        public List<Item> Items { get; set; }
 
-        public Shop(List<Item> initialItems) 
+        public GameShop(List<Item> initialItems) 
         {
             Items = initialItems;
         }
 
-        public static void DisplayItems()
+        public void DisplayItems()
         {
             Console.WriteLine("Shop");
             foreach (ShopItem item in Items)
@@ -31,7 +31,7 @@ namespace The_Game.Shop
             }
         }
 
-        public static void OpenShop()
+        public void OpenShop()
         {
             Program.ShopOpen = true;
             bool shopping = true;
