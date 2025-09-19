@@ -62,5 +62,10 @@ namespace The_Game.Skills
                 Family = new List<SkillBase>(skill.Family) 
             };
         }
+
+        public static List<SkillBase> AllSkills = new List<SkillBase>()
+        {
+            Attack, Fire, Water, Earth, Air
+        };
     }
 }
