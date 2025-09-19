@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using The_Game.Skills;
 
 namespace The_Game.Shop
 {
@@ -10,7 +11,8 @@ namespace The_Game.Shop
     {
         public static Item FireSkill = new Item("Fire Skill", null, null, null)
         {
-            IsBuy = true
+            IsBuy = true,
+            Skill = SkillDatabase.CloneSkill(SkillDatabase.Fire)
         };
 
         public static Item WaterSkill = new Item("Water Skill", null, null, null)

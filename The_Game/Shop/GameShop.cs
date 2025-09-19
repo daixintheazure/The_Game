@@ -9,7 +9,7 @@ namespace The_Game.Shop
 {
     public class GameShop
     {
-        public CharacterBase Character { get; set; }
+        public CharacterBase character { get; set; }
 
         public List<Item> Items { get; set; }
 
@@ -53,6 +53,8 @@ namespace The_Game.Shop
                     }
                     else if(choice == Items[choice].Id)
                     {
+                        var item = Items[choice];
+                        item.Buy();
                     
                     }
                     else
