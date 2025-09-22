@@ -41,7 +41,7 @@ namespace The_Game.Shop
             Console.WriteLine();
         }
 
-        public abstract void Buy(PlayerCharacter player);
+        
         
     }
 }

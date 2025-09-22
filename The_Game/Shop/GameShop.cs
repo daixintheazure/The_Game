@@ -9,18 +9,19 @@ namespace The_Game.Shop
 {
     public class GameShop
     {
-        public CharacterBase character { get; set; }
+        public CharacterBase _character { get; set; }
 
         public List<Item> Items { get; set; }
 
-        public GameShop(List<Item> initialItems) 
+        public GameShop(CharacterBase character, List<Item> initialItems) 
         {
+            _character = character;
             Items = initialItems;
         }
 
         public void DisplayItems()
         {
-            Console.WriteLine("Shop");
+            Console.WriteLine("=== Shop ===");
             foreach (ShopItem item in Items)
             {
                 if (item.IsBuy == true)
@@ -51,19 +52,45 @@ namespace The_Game.Shop
                         Program.ShopOpen = false;
                         shopping = false;
                     }
-                    else if(choice == Items[choice].Id)
-                    {
-                        var item = Items[choice];
-                        item.Buy();
-                    
-                    }
                     else
                     {
-                        Console.WriteLine("Invalid choice.");
+                        var item = Items.FirstOrDefault(i => i.Id == choice);
+                        if (item != null && item.IsBuy)
+                        {
+                            BuyItem(item);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Choice");
+                            Console.ReadKey();
+                        }
+                    
                     }
                 }
             }
 
+        }
+
+        private void BuyItem(Item item)
+        {
+            if (item.Cost.HasValue && _character.Coins >= item.Cost.Value)
+            {
+                _character.Coins -= item.Cost.Value;
+
+                if (item.UnlockSkill != null)
+                {
+                    _character.Skills.Add(item.UnlockSkill);
+                    Console.WriteLine($"{_character.Name} learned {item.UnlockSkill.Name}!");
+                }
+
+                Console.WriteLine($"{_character.Name} bought {item.Name} for {item.Cost} coins.");
+            }
+            else
+            {
+                Console.WriteLine("Not enough coins!");
+            }
+
+            Console.ReadKey();
         }
     }
 }

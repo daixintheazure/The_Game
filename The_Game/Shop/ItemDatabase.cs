@@ -9,25 +9,24 @@ namespace The_Game.Shop
 {
     public static class ItemDatabase
     {
-        public static Item FireSkill = new Item("Fire Skill", null, null, null)
+        public static Item FireSkill = new Item("Fire Skill", 10, null, null, SkillDatabase.CloneSkill(SkillDatabase.Fire))
         {
-            IsBuy = true,
-            Skill = SkillDatabase.CloneSkill(SkillDatabase.Fire)
+            IsBuy = true 
         };
 
-        public static Item WaterSkill = new Item("Water Skill", null, null, null)
+        public static Item WaterSkill = new Item("Water Skill", 10, null, null, SkillDatabase.CloneSkill(SkillDatabase.Water))
         {
-
+            IsBuy= true
         };
 
-        public static Item EarthSkill = new Item("Earth Skill", null, null, null)
+        public static Item EarthSkill = new Item("Earth Skill", 10, null, null, SkillDatabase.CloneSkill(SkillDatabase.Earth))
         {
-
+            IsBuy=(true)
         };
 
-        public static Item AirSkill = new Item("Air Skill", null, null, null)
+        public static Item AirSkill = new Item("Air Skill", 10, null, null, SkillDatabase.CloneSkill(SkillDatabase.Air))
         {
-
+            IsBuy=(true)
         };
 
 

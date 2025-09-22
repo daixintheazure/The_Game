@@ -11,16 +11,13 @@ namespace The_Game.Shop
     
     public class Item : ShopItem
     {
-        public Item(string name, int? cost, int? expCost, string? description)
-            : base(name, cost, expCost, description) { }
-
-
-        public SkillBase Skill { get; set; }
-
-        public override void Buy(PlayerCharacter player)
+        public SkillBase? UnlockSkill {  get; set; }
+        public Item(string name, int? cost, int? expCost, string? description, SkillBase? unlockSkill = null)
+            : base(name, cost, expCost, description)
         {
-            player.Skills.Add(Skill);
+            UnlockSkill = unlockSkill;
         }
+
     }
 }
 

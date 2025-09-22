@@ -23,7 +23,7 @@ public class Program
     public static async Task Main()
     {
         Task generator = StartGame();
-        GameShop shop = new GameShop (ItemDatabase.AllItems);
+        GameShop shop = new GameShop (dai, ItemDatabase.AllItems);
 
         while (running)
         {
@@ -32,17 +32,7 @@ public class Program
             if (input == "shop")
             {
                 shop.OpenShop();   
-                //if (coins >= upgradeCost)
-                //{
-                //    coins -= upgradeCost;
-                //    coinsPerTick += 1;
-                //    upgradeCost += 5;
-                //    Console.WriteLine($"Upgrade purchased! Coins/tick: {coinsPerTick}, Next upgrade cost: {upgradeCost}");
-                //}
-                //else
-                //{
-                //    Console.WriteLine($"Not enough coins. You have {coins}, but need {upgradeCost}.");
-                //}
+                
             }
             else if (input == "exit")
             {
